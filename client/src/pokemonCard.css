@@ -1,0 +1,9 @@
+.card {
+    background-color: #202020 !important;
+    border: 1px solid black;
+}
+
+.card:hover {
+    box-shadow: 7px 7px 7px black;
+    scale: 105%;
+}

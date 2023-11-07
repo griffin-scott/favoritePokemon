@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import '../pokemonCard.css'
 
 const PokemonCard = ({ pokemon }) => {
     const [pokeInfo, setPokeInfo] = useState(null);
@@ -22,8 +23,8 @@ const PokemonCard = ({ pokemon }) => {
     }
 
     return (
-        <div className="PokemonCard col-4 mb-3 d-flex align-items-stretch text-center">
-            <div className="card container-fluid">
+        <div className="PokemonCard col-4 my-3 d-flex align-items-stretch text-center">
+            <div className="card container-fluid bg-dark text-white m-2">
                 <img
                     src={pokeInfo.image}
                     className="card-img-top"
