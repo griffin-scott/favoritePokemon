@@ -7,13 +7,12 @@ import HomePage from "./components/HomePage";
 import context from "./context/context";
 
 const App = () => {
-    const [data, setData] = useState([]);
+    const [pokemon, setPokemon] = useState([]);
 
     const getData = async () => {
-        const res = await fetch("http://localhost:8000/api/status");
-        const resData = await res.json();
-        console.log(resData);
-        setData(resData);
+        const res = await fetch("http://localhost:8000/api/pokemon");
+        const data = await res.json();
+        setPokemon(data);
     };
 
     useEffect(() => {
@@ -23,7 +22,7 @@ const App = () => {
     const { Provider } = context;
 
     return (
-        <Provider value={data}>
+        <Provider value={pokemon}>
             <BrowserRouter>
                 <div className="App d-flex flex-column h-100 lead bg-dark">
                     {/* <Navbar /> */}
