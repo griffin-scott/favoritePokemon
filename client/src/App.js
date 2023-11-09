@@ -3,6 +3,8 @@ import { React, useState, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
+import TypePage from "./components/TypePage";
+import ErrorPage from "./components/ErrorPage";
 
 import context from "./context/context";
 
@@ -28,6 +30,8 @@ const App = () => {
                     {/* <Navbar /> */}
                     <Routes>
                         <Route exact path="/" element={<HomePage />} />
+                        <Route exact path="/type/:id" element={<TypePage />} />
+                        <Route exact path="/*" element={<ErrorPage />} />
                     </Routes>
                 </div>
             </BrowserRouter>

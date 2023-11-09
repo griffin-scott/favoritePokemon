@@ -1,9 +1,95 @@
-.card {
-    background-color: #202020 !important;
-    border: 1px solid black;
+@font-face {
+    font-family: PKMN;
+    src: url(./fonts/PKMN.ttf);
+}
+
+#card {
+    background-color: #303030 !important;
+    /* border: 1px solid black; */
 }
 
 .card:hover {
-    box-shadow: 7px 7px 7px black;
+    box-shadow: 5px 5px 5px black;
     scale: 105%;
+}
+
+.pkmn_card {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.35rem;
+    /* letter-spacing: -0.1rem; */
+}
+
+
+
+/*----------------------- Pokemon Type Colors -----------------------*/
+.fire {
+    background-color: #ee8130 !important;
+}
+
+.water {
+    background-color: #303060 !important;
+}
+
+.grass {
+    background-color: #7ac74c !important;
+}
+
+.normal {
+    background-color: #a8a77a !important;
+}
+
+.electric {
+    background-color: #F7D02C !important;
+}
+
+.ice {
+    background-color: #96d9d6 !important;
+}
+
+.fighting {
+    background-color: #c22e28 !important;
+}
+
+.poison {
+    background-color: #a33ea1 !important;
+}
+
+.flying {
+    background-color: #a98ff3 !important;
+}
+
+.psychic {
+    background-color: #f95587 !important;
+}
+
+.bug {
+    background-color: #a6b91a !important;
+}
+
+.rock {
+    background-color: #b6a136 !important;
+}
+
+.ground {
+    background-color: #e2bf65 !important;
+}
+
+.ghost {
+    background-color: #735797 !important;
+}
+
+.dark {
+    background-color: #705746 !important;
+}
+
+.dragon {
+    background-color: #6f35fc !important;
+}
+
+.steel {
+    background-color: #b7b7ce !important;
+}
+
+.fairy {
+    background-color: #d685ad !important;
 }

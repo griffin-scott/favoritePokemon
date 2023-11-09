@@ -8,13 +8,12 @@ body {
     color: white;
 }
 
-html,
-body,
-#root {
-    /* height: 100%; */
+a {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    color: white !important;
 }
 
-a {
-    text-decoration: none;
-    color: white;
+.btn-hover:hover {
+    cursor: pointer !important;
 }

@@ -11,7 +11,7 @@ const PokemonList = () => {
         return <LoadingGif />;
     }
 
-    const shortList = pokemonList.slice(0, 9);
+    const shortList = pokemonList.slice(0, 30);
     // console.log(shortList);
 
     return (
