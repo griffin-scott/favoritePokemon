@@ -5,6 +5,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import TypePage from "./components/TypePage";
 import ErrorPage from "./components/ErrorPage";
+import Nav from "./components/Nav";
 
 import context from "./context/context";
 
@@ -26,8 +27,8 @@ const App = () => {
     return (
         <Provider value={pokemon}>
             <BrowserRouter>
-                <div className="App d-flex flex-column h-100 lead bg-dark">
-                    {/* <Navbar /> */}
+                <div className="App d-flex flex-column h-100 lead bg-dark" data-bs-theme="dark">
+                    <Nav />
                     <Routes>
                         <Route exact path="/" element={<HomePage />} />
                         <Route exact path="/type/:id" element={<TypePage />} />

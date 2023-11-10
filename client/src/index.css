@@ -4,7 +4,7 @@ body {
         "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #252525 !important;
+    background-color: #212529 !important;
     color: white;
 }
 
@@ -16,4 +16,22 @@ a {
 
 .btn-hover:hover {
     cursor: pointer !important;
+}
+
+/*--------------- Navbar styling ---------------*/
+
+.dropdown-menu.columns-2 {
+    min-width: 250px;
+}
+
+.dropdown-item {
+    margin: auto 0;
+    text-align: center !important;
+    border-radius: 2px !important;
+}
+
+.multi-column-dropdown {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
 }
