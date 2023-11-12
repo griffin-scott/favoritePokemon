@@ -5,7 +5,7 @@ const PokemonCard = ({ pokemon }) => {
     const [pokeInfo, setPokeInfo] = useState(null);
 
     const getData = async () => {
-        const id = pokemon.id
+        const id = pokemon.id - 1
         const res = await fetch(`http://localhost:8000/api/pokemon/${id}`);
         const data = await res.json();
         setPokeInfo(data);

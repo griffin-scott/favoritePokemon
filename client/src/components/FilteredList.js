@@ -5,29 +5,27 @@ import LoadingGif from "./LoadingGif";
 
 const FilteredList = (props) => {
     const pokemonContext = useContext(context);
-    console.log(props.type)
-
-    if (!pokemonContext){ return (<LoadingGif />) }
-
-    console.log(pokemonContext)
+    console.log(`type is ${props.type}`);
 
     const filterByType = (pokemon) => {
-        return pokemon.types.includes(props.type)
-    }
+        return pokemon.types.includes(props.type);
+    };
 
     const filterByGen = () => {
-        return 0
-    }
+        return 0;
+    };
 
     const filteredPokemon = pokemonContext.filter(filterByType);
 
     console.log(filteredPokemon);
 
     return (
-        <div className="row">
-            {filteredPokemon.map((pokemon) => (
-                <PokemonCard key={pokemon.name} pokemon={pokemon} />
-            ))}
+        <div className="FilteredList container-fluid">
+            <div className="row">
+                {filteredPokemon.map((pokemon) => (
+                    <PokemonCard key={pokemon.name} pokemon={pokemon} />
+                ))}
+            </div>
         </div>
     );
 };

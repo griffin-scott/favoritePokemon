@@ -26,11 +26,10 @@ const TypePage = () => {
 
     return (
         <div className="TypePage h-100 d-flex justify-content-center">
-            {/* <div className="col-10 d-flex flex-column align-items-center">
+            <div className="col-10 d-flex flex-column align-items-center">
                 <h1 className="display-3 text-center text-white">{capsFirstLetter(type)} Type</h1>
-                <button onClick={navHome} href="#" className="btn btn-primary btn-hover col-3">Return Home</button>
-            </div> */}
-            <FilteredList type={type}/>
+                <FilteredList type={type}/>
+            </div>
         </div>
     );
 };

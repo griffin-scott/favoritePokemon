@@ -7,7 +7,6 @@ import context from "../context/context";
 const PokemonList = () => {
     // const [filter, setFilter] = useState({});
 
-
     // Display loading gif if context hasn't loaded yet.
     const pokemonList = useContext(context);
 
@@ -15,10 +14,7 @@ const PokemonList = () => {
         return <LoadingGif />;
     }
 
-
-
     const shortList = pokemonList.slice(0, 30);
-    console.log(shortList[0])
 
     return (
         <div className="PokemonList container-fluid">
@@ -28,14 +24,6 @@ const PokemonList = () => {
                     <PokemonCard key={pokemon.name} pokemon={pokemon} />
                 ))}
             </div>
-
-
-            {/*------- Original un-filtered row -------*/}
-            {/* <div className="row">
-                {shortList.map((pokemon) => (
-                    <PokemonCard key={pokemon.name} pokemon={pokemon} />
-                ))}
-            </div> */}
         </div>
     );
 };
