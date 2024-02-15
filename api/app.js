@@ -1,21 +1,13 @@
-// import express from "express"
-// import dotenv from "dotenv"
-// import cors from "cors"
-// import routes from "./routes.js"
-
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
-const routes = require('./routes.js')
+const routes = require('./old_routes.js')
 
-// console.log(dotenv.config())
-// const express = require("express");
 const app = express();
 
-// const cors = require("cors");
 app.use(cors());
 
-// dotenv.config({path: '.env.development'});
+dotenv.config({path: '.env.development'});
 // dotenv.config();
 
 app.use(function (req, res, next) {
@@ -27,7 +19,7 @@ app.use(function (req, res, next) {
 
 app.use(express.json());
 
-// let routes = require("./routes");
+let routes = require("./routes.js");
 app.use("/api", routes);
 
 const PORT = process.env.PORT || 8000;

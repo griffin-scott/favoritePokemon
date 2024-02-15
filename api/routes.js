@@ -1,10 +1,5 @@
-const pkmnJson = require('./data/pokemon-details.json');
-// const db = require('./db/conn.mjs')
-// import db from './db/conn.mjs'
-
-let express = require("express"),
-router = express.Router();
-
+const express = require("express")
+const router = express.Router();
 
 router.get("/status", (req, res) => {
     const status = {
@@ -13,44 +8,62 @@ router.get("/status", (req, res) => {
     res.send(status);
 });
 
-/* ------------------------ Local DB requests ------------------------ */
 
-/* ---------------- GET ---------------- */
+/* ---------------- MONGODB REQUESTS ---------------- */
 
+/* --------- GET ALL --------- */
 router.get("/pokemon", async (req, res) => {
-    const data = pkmnJson
-    res.send(data)
+    let query = await Pokemon.find({})
+
+    res.send(query)
 });
 
+/* --------- GET ONE --------- */
 router.get("/pokemon/:id", async (req, res) => {
-    const data = pkmnJson[req.params.id]
+    let poke_id = req.params.id;
 
-    res.send(JSON.stringify(data))
+    let query = await Details.findOne({id: poke_id})
+    res.send(query)
 });
 
+/* --------- POST ONE --------- */
+router.post("/pokemon", (req, res) => {
+    const detailsList = pDetails
+
+    for (let p of detailsList){
+        const statsArr = p.stats.map((s) => s['base_stat'])
+        const typesArr = p.types.map((t) => t.type.name)
+        const abilitiesArr = p.abilities.map((a) => a.ability.name)
+        const spritesArr = [
+            p.sprites.other['official-artwork']['front_default'],
+            p.sprites.other.showdown['front_default']
+        ]
+        const speciesObj = {
+            name: p.species.name,
+            url: p.species.url
+        }
+
+        let details = new Details({
+            id: p.id,
+            abilities: abilitiesArr,
+            base_experience: p.base_experience,
+            name: p.name,
+            types: typesArr,
+            species: speciesObj,
+            sprites: spritesArr,
+            stats: statsArr,
+            height: p.height,
+            weight: p.weight
+        })
+
+        details.save().then(
+            (err) => console.error(err)
+        );
+    }
 
 
-
-/* ------------------------- MongoDB requests ------------------------- */
-
-/* ---------------- GET ---------------- */
-
-router.get("test", async (req, res) => {
-    let collection = await db.collection("pokemon");
-    let results = await collection.find({})
-    .limit(5)
-    .toArray();
-    res.send(results)
-});
-
-
-
-/* ---------------- POST ---------------- */
-
-router.post("/db/pokemon", async (req, res) => {
-
+    res.send(":)")
 });
 
 
 module.exports = router
-// export default router
