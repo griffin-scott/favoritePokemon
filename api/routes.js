@@ -1,5 +1,10 @@
 const express = require("express")
+const dotenv = require("dotenv")
+require("dotenv").config();
+const mongoose = require("mongoose")
 const router = express.Router();
+
+dotenv.config({path: '.env.development'});
 
 router.get("/status", (req, res) => {
     const status = {
@@ -10,6 +15,9 @@ router.get("/status", (req, res) => {
 
 
 /* ---------------- MONGODB REQUESTS ---------------- */
+
+mongoose.connect(process.env.MONGODB_URI)
+const Pokemon = require('./models/PokemonModel')
 
 /* --------- GET ALL --------- */
 router.get("/pokemon", async (req, res) => {
@@ -22,47 +30,31 @@ router.get("/pokemon", async (req, res) => {
 router.get("/pokemon/:id", async (req, res) => {
     let poke_id = req.params.id;
 
-    let query = await Details.findOne({id: poke_id})
+    let query = await Pokemon.findOne({id: poke_id})
     res.send(query)
 });
 
 /* --------- POST ONE --------- */
 router.post("/pokemon", (req, res) => {
-    const detailsList = pDetails
 
-    for (let p of detailsList){
-        const statsArr = p.stats.map((s) => s['base_stat'])
-        const typesArr = p.types.map((t) => t.type.name)
-        const abilitiesArr = p.abilities.map((a) => a.ability.name)
-        const spritesArr = [
-            p.sprites.other['official-artwork']['front_default'],
-            p.sprites.other.showdown['front_default']
-        ]
-        const speciesObj = {
-            name: p.species.name,
-            url: p.species.url
-        }
+    const p = req.body
 
-        let details = new Details({
-            id: p.id,
-            abilities: abilitiesArr,
-            base_experience: p.base_experience,
-            name: p.name,
-            types: typesArr,
-            species: speciesObj,
-            sprites: spritesArr,
-            stats: statsArr,
-            height: p.height,
-            weight: p.weight
-        })
+    let pokemon = new Pokemon({
+        id: p.id,
+        name: p.name,
+        types: p.types,
+        species: p.species,
+        sprites: p.sprites,
+        stats: p.stats,
+        height: p.height,
+        weight: p.weight
+    })
 
-        details.save().then(
-            (err) => console.error(err)
-        );
-    }
+    pokemon.save().then(
+        (err) => console.error(err),
+        res.send(":)")
+    );
 
-
-    res.send(":)")
 });
 
 

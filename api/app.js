@@ -1,7 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
-const routes = require('./old_routes.js')
 
 const app = express();
 

@@ -14,14 +14,11 @@ const pokemonSchema = new mongoose.Schema({
         default: [],
         // required: true,
     },
-    abilities: {
-        type: Array,
-        default: [],
-        // required: true,
-    },
-    base_experience: {
-        type: Number,
-    },
+    // abilities: {
+    //     type: Array,
+    //     default: [],
+    //     // required: true,
+    // },
     species: {
         name: {
             type: String,
