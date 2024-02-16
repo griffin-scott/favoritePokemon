@@ -5,10 +5,11 @@ const PokemonCard = ({ pokemon }) => {
     const [pokeInfo, setPokeInfo] = useState(null);
 
     const getData = async () => {
-        const id = pokemon.id - 1
+        const id = pokemon.id
         const res = await fetch(`http://localhost:8000/api/pokemon/${id}`);
         const data = await res.json();
-        setPokeInfo(data);
+
+        setPokeInfo({...data, image: data.sprites[0].other['official-artwork'].front_default});
     };
 
     const typeClassNames = (type) => `col rounded mx-1 px-1 fw-bold w-auto pkmn_card ${type}`;
@@ -37,8 +38,11 @@ const PokemonCard = ({ pokemon }) => {
                 <div className="card-body d-flex flex-column justify-content-center">
                     <div className="d-flex justify-content-center">
                         <div className="row justify-content-center">
-                            <h5 className="card-title">
-                                #{padZeroes(pokeInfo.id)} {capsFirstLetter(pokeInfo.name)}
+                            <h3 className="card-title">
+                                {capsFirstLetter(pokeInfo.name)}
+                            </h3>
+                            <h5 className="mt-1">
+                                #{padZeroes(pokeInfo.id)}
                             </h5>
                             {pokeInfo.types.map((type) => (
                                 <div className={typeClassNames(type)} key={type}>

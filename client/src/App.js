@@ -15,6 +15,8 @@ const App = () => {
     const getData = async () => {
         const res = await fetch("http://localhost:8000/api/pokemon");
         const data = await res.json();
+
+        console.log(data)
         setPokemon(data);
     };
 

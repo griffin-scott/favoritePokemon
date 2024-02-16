@@ -35,9 +35,10 @@ router.get("/pokemon/:id", async (req, res) => {
 });
 
 /* --------- POST ONE --------- */
-router.post("/pokemon", (req, res) => {
+router.post("/pokemon", async (req, res) => {
 
     const p = req.body
+    // Should account for error if type ARRAY or OBJ is passed in
 
     let pokemon = new Pokemon({
         id: p.id,
@@ -50,11 +51,12 @@ router.post("/pokemon", (req, res) => {
         weight: p.weight
     })
 
-    pokemon.save().then(
+    await pokemon.save().then(
         (err) => console.error(err),
-        res.send(":)")
     );
 
+
+    res.send("Post Successful")
 });
 
 
